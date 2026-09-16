@@ -1,37 +1,38 @@
-# Metro API — Spring Boot
+# API Metro — Spring Boot
 
-A small RESTful Metro/transit API with **12 endpoints**, validation, HTTP status handling, and in-memory sample data.
+Une petite API REST pour le transport en commun avec **12 endpoints**, une validation des données, une gestion des codes HTTP et des données d’exemple stockées en mémoire.
 
-## Requirements
-- Java 17+
-- Maven 3.9+
+## Prérequis
 
-## Run
+* Java 17+
+* Maven 3.9+
+
+## Lancer l’application
 
 ```bash
 mvn spring-boot:run
 ```
 
-The API starts at `http://localhost:8080`.
+L’API démarre à l’adresse `http://localhost:8080`.
 
 ## Endpoints
 
-| # | Method | Endpoint | Purpose |
-|---|---|---|---|
-| 1 | GET | `/api/stations` | List stations; optional `line` and `q` filters |
-| 2 | GET | `/api/stations/{id}` | Get one station |
-| 3 | POST | `/api/stations` | Create a station |
-| 4 | PUT | `/api/stations/{id}` | Update a station |
-| 5 | DELETE | `/api/stations/{id}` | Delete a station |
-| 6 | GET | `/api/lines` | List metro lines |
-| 7 | GET | `/api/lines/{id}` | Get one line |
-| 8 | GET | `/api/stations/{id}/arrivals` | Get upcoming arrivals |
-| 9 | GET | `/api/status` | Network and line status |
-| 10 | GET | `/api/health` | Basic health response |
-| 11 | GET | `/api/stations/{id}/lines` | Lines serving a station |
-| 12 | GET | `/api/stations/search?q=...` | Search stations |
+| #  | Méthode | Endpoint                      | Description                                           |
+| -- | ------- | ----------------------------- | ----------------------------------------------------- |
+| 1  | GET     | `/api/stations`               | Liste les stations ; filtres optionnels `line` et `q` |
+| 2  | GET     | `/api/stations/{id}`          | Récupère une station                                  |
+| 3  | POST    | `/api/stations`               | Crée une station                                      |
+| 4  | PUT     | `/api/stations/{id}`          | Met à jour une station                                |
+| 5  | DELETE  | `/api/stations/{id}`          | Supprime une station                                  |
+| 6  | GET     | `/api/lines`                  | Liste les lignes de métro                             |
+| 7  | GET     | `/api/lines/{id}`             | Récupère une ligne                                    |
+| 8  | GET     | `/api/stations/{id}/arrivals` | Récupère les prochaines arrivées                      |
+| 9  | GET     | `/api/status`                 | Affiche l’état du réseau et des lignes                |
+| 10 | GET     | `/api/health`                 | Vérifie l’état de fonctionnement de l’API             |
+| 11 | GET     | `/api/stations/{id}/lines`    | Liste les lignes desservant une station               |
+| 12 | GET     | `/api/stations/search?q=...`  | Recherche des stations                                |
 
-## Examples
+## Exemples
 
 ```bash
 curl http://localhost:8080/api/stations
@@ -41,10 +42,12 @@ curl http://localhost:8080/api/stations/1/arrivals
 curl http://localhost:8080/api/status
 ```
 
-Create a station:
+Créer une station :
 
 ```bash
-curl -X POST http://localhost:8080/api/stations   -H "Content-Type: application/json"   -d '{
+curl -X POST http://localhost:8080/api/stations \
+  -H "Content-Type: application/json" \
+  -d '{
     "name": "Downtown",
     "code": "DWN",
     "lines": ["red", "blue"],
@@ -55,6 +58,6 @@ curl -X POST http://localhost:8080/api/stations   -H "Content-Type: application/
 
 ## Architecture
 
-`MetroController` → `MetroService` → in-memory maps
+`MetroController` → `MetroService` → cartes de données en mémoire
 
-For a production system, replace the in-memory service with a repository/database layer and add authentication, OpenAPI documentation, pagination, integration tests, and real-time transit data ingestion.
+Pour un système destiné à la production, il faudrait remplacer le service utilisant la mémoire par une couche de repository/base de données et ajouter l’authentification, la documentation OpenAPI, la pagination, des tests d’intégration ainsi que l’intégration de données de transport en temps réel.

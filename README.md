@@ -7,6 +7,11 @@ Une petite API REST pour le transport en commun avec **12 endpoints**, une valid
 * Java 17+
 * Maven 3.9+
 
+```bash
+java -v
+mvn -v
+```
+
 ## Lancer l’application
 
 ```bash
@@ -59,5 +64,3 @@ curl -X POST http://localhost:8080/api/stations \
 ## Architecture
 
 `MetroController` → `MetroService` → cartes de données en mémoire
-
-Pour un système destiné à la production, il faudrait remplacer le service utilisant la mémoire par une couche de repository/base de données et ajouter l’authentification, la documentation OpenAPI, la pagination, des tests d’intégration ainsi que l’intégration de données de transport en temps réel.

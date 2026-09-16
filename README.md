@@ -5,16 +5,19 @@ Une petite API REST pour le transport en commun avec **12 endpoints**, une valid
 ## Prérequis
 
 * Java 17+
-* Maven 3.9+
-
 ```bash
 java -v
+```
+* Maven 3.9+
+```bash
 mvn -v
 ```
 
 ## Lancer l’application
 
 ```bash
+git clone https://github.com/KevinEJean/API_Metro.git
+cd API_Metro
 mvn spring-boot:run
 ```
 

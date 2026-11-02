@@ -40,7 +40,7 @@ jobs:
   build-and-push-image:
     needs: build-and-test
     if: always() && needs.build-and-test.result == 'success'
-    runs-on: ubuntu-latets
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write

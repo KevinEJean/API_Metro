@@ -74,5 +74,5 @@ jobs:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ghcr.io/${{ env.OWNER_LC }}/petclinic:latest 
-            ghcr.io/${{ env.OWNER_LC }}/petclinic:${{ github.sha }}
+            ghcr.io/${{ env.OWNER_LC }}/api_metro:latest 
+            ghcr.io/${{ env.OWNER_LC }}/api_metro:${{ github.sha }}
